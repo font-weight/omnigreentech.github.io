@@ -1,0 +1,244 @@
+<!doctype html>
+
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width">
+	<title>Моя тестовая страница</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="js/jquery-3.7.1.slim.min.js"></script>
+</head>
+
+<body>
+	<header></header>
+	<div class="wrap">
+		<a href="#" class="menu-btn"><svg id="Layer_1" version="1.1" viewBox="0 0 512 512" xml:space="preserve"
+				xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+				<g>
+					<g>
+						<path class="st0"
+							d="M381,190.9H131c-11,0-20-9-20-20s9-20,20-20h250c11,0,20,9,20,20S392,190.9,381,190.9z" />
+					</g>
+					<g>
+						<path class="st0"
+							d="M381,361.1H131c-11,0-20-9-20-20s9-20,20-20h250c11,0,20,9,20,20S392,361.1,381,361.1z" />
+					</g>
+					<g>
+						<path class="st0"
+							d="M381,276H131c-11,0-20-9-20-20s9-20,20-20h250c11,0,20,9,20,20S392,276,381,276z" />
+					</g>
+				</g>
+			</svg></a>
+		<div class="menu">
+
+			<nav class="menu-list">
+				<a href="#" id="main-page">Главная</a>
+				<a href="#" id="scheme-page">Схема</a>
+				<a href="#" id="data-page">Данные</a>
+				<a href="#" id="about-us-page">О проекте</a>
+			</nav>
+		</div>
+		<div class="content">
+			<div class="content-page main__page">
+				<div class="tables__body">
+					<div class="tables__element box_shadow">
+						<table class="temp_table">
+							<caption>Температура</caption>
+							<tr>
+								<th class="table_first">№</th>
+								<th>Емкость</th>
+								<th class="table_last">Температура</th>
+							</tr>
+							<tr>
+								<td class="table_first">1</td>
+								<td>1 емкость</td>
+								<td id="temp_1">30°C</td>
+							</tr>
+							<tr>
+								<td class="table_first">2</td>
+								<td>2 емкость</td>
+								<td id="temp_2">28°C</td>
+							</tr>
+							<tr>
+								<td class="table_first">3</td>
+								<td>3 емкость</td>
+								<td id="temp_3">33°C</td>
+							</tr>
+						</table>
+						<!-- <input type="button" id="temp_button" class="button" value="Обновить"> -->
+					</div>
+					<div class="tables__element box_shadow">
+						<table class="ph_table">
+							<caption>Кислотность</caption>
+							<tr>
+								<th class="table_first">№</th>
+								<th>Емкость</th>
+								<th class="table_last">Кислотность</th>
+							</tr>
+							<tr>
+								<td class="table_first">1</td>
+								<td>1 емкость</td>
+								<td id="ph_1">30</td>
+							</tr>
+							<tr>
+								<td class="table_first">2</td>
+								<td>2 емкость</td>
+								<td id="ph_2">28</td>
+							</tr>
+							<tr>
+								<td class="table_first">3</td>
+								<td>3 емкость</td>
+								<td id="ph_3">33</td>
+							</tr>
+						</table>
+						<!-- <input type="button" id="ph_button" class="button" value="Обновить"> -->
+					</div>
+
+
+
+				</div>
+				<div class="relay__set">
+					<div class="pump__set relay__set__el box_shadow">
+						<span>Насосы</span>
+						<div class="relay__element">
+							<span class="relay__name">Насос 1</span>
+							<input type="button" id="relay_button_0" class="relay_off" />
+						</div>
+						<div class="relay__element">
+							<span class="relay__name">Насос 2</span>
+							<input type="button" id="relay_button_1" class="relay_off" />
+						</div>
+						<div class="relay__element">
+							<span class="relay__name">Насос 3</span>
+							<input type="button" id="relay_button_2" class="relay_off" />
+						</div>
+					</div>
+					<div class="light__set relay__set__el box_shadow">
+						<span>Освещение</span>
+						<div class="relay__element">
+							<span class="relay__name">Свет 1</span>
+							<input type="button" id="relay_button_3" class="relay_off" />
+						</div>
+						<div class="relay__element">
+							<span class="relay__name">Свет 2</span>
+							<input type="button" id="relay_button_4" class="relay_off" />
+						</div>
+						<div class="relay__element">
+							<span class="relay__name">Свет 3</span>
+							<input type="button" id="relay_button_5" class="relay_off" />
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+			<div class="content-page scheme__page">
+				scheme
+			</div>
+			<div class="content-page data__page">
+				data
+			</div>
+			<div class="content-page about-us__page">
+				about us
+			</div>
+		</div>
+
+
+	</div>
+
+	<script>
+		var relay_quantity = 6; // количество реле
+		var relay_1 = document.getElementById("relay_button_1");
+		// var relay_1 = document.getElementById("relay_button_2");
+		// var relay_3 = document.getElementById("relay_button_3");
+		// var relay_4 = document.getElementById("relay_button_4");
+		// var relay_5 = document.getElementById("relay_button_5");
+		// var relay_6 = document.getElementById("relay_button_6");
+		var relay_status = [];
+		let relay = [];
+
+		for (let i = 0; i < relay_quantity; i++) {
+			let relay_id = "relay_button_" + i;
+			relay.push(document.getElementById(relay_id));
+			relay_status.push(0);
+		}
+		console.log(relay);
+		function relay_state(i) {
+			var request = new XMLHttpRequest();
+			request.open('GET', '/relay_status?val=' + i, true);
+			request.onload = function () {
+				if (request.readyState == 4 && request.status == 200) {
+					var response = request.responseText;
+					relay_status[i] = Number.parseInt(response);
+					if (response == '0') {
+						relay[i].classList.remove('relay_on');
+						relay[i].classList.add('relay_off');
+						console.log(response);
+					} else {
+						relay[i].classList.remove('relay_off');
+						relay[i].classList.add('relay_on');
+						console.log(response);
+					}
+
+				}
+			}
+			request.send();
+		}
+		function relay_inverse(i) {
+			var request = new XMLHttpRequest();
+			request.open('GET', '/relay_switch?val=' + i, false);
+			request.send();
+			if (request.readyState == 4 && request.status == 200) {
+				var response = request.responseText;
+				if (response == '0') {
+
+					relay[i].classList.remove('relay_on');
+					relay[i].classList.add('relay_off');
+					relay_status[i] = 0;
+				} else {
+					relay[i].classList.remove('relay_off');
+					relay[i].classList.add('relay_on');
+					relay_status[i] = 1;
+				}
+			}
+		}
+
+		document.addEventListener('DOMContentLoaded', function () {
+			for (let i = 0; i < relay_quantity; i++) {
+				relay_state(i);
+			}
+		});
+
+		for (let i = 0; i < relay_quantity; i++) {
+			relay[i].addEventListener('click', function () {
+				relay_inverse(i);
+			});
+		}
+
+
+		$('.menu-btn').on('click', function () {
+			$('.menu').toggleClass('menu_active');
+			$('.content').toggleClass('content_active');
+		})
+
+		$('#main-page').on('click', function () {
+			$('.content-page').css('display', 'none');
+			$('.main__page').css('display', 'block');
+		})
+		$('#scheme-page').on('click', function () {
+			$('.content-page').css('display', 'none');
+			$('.scheme__page').css('display', 'block');
+		})
+		$('#data-page').on('click', function () {
+			$('.content-page').css('display', 'none');
+			$('.data__page').css('display', 'block');
+		})
+		$('#about-us-page').on('click', function () {
+			$('.content-page').css('display', 'none');
+			$('.about-us__page').css('display', 'block');
+		})
+	</script>
+</body>
+
+</html>
