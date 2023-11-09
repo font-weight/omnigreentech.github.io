@@ -285,11 +285,11 @@ header {
   margin-bottom: 20px;
 }
 
-/* @media (max-width: 470px) {
-  .tabs__items {
-    display: none;
+@media (max-width: 480px) {
+  .scheme-text, .about-us_text {
+    font-size: 20px;
   }
-} */
+}
 
 @media (max-width: 1000px) {
   .relay__element {
