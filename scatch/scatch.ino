@@ -274,16 +274,6 @@ void setup(void){
   DBG_OUTPUT_PORT.println(WiFi.softAPIP());  // выводим локальный IP-адресс
   DBG_OUTPUT_PORT.println("\n");
 
-  // Wait for connection
-  // uint8_t i = 0;
-  // while (WiFi.status() != WL_CONNECTED && i++ < 20) {//wait 10 seconds
-  //   delay(500);
-  // }
-  // if(i == 21){
-  //   DBG_OUTPUT_PORT.print("Could not connect to");
-  //   DBG_OUTPUT_PORT.println(ssid);
-  //   while(1) delay(500);
-  // }
   DBG_OUTPUT_PORT.print("Connected! IP address: ");
   DBG_OUTPUT_PORT.println(WiFi.localIP());
 
@@ -293,12 +283,6 @@ void setup(void){
   server.on("/edit", HTTP_POST, [](){ returnOK(); }, handleFileUpload);
   server.on("/relay_switch", relay_switch);     // переключать состояние реле по запросу вида /relay_switch?val=relay_id
   server.on("/relay_status", relay_status);     // переключать состояние реле по запросу вида /relay_switch?val=relay_id
-  // server.on("/relay_switch", []() {                     // при HTTP-запросе вида http://192.168.4.1/relay_switch
-  //   server.send(200, "text/plain", relay_switch());     // отдаем клиенту код успешной обработки запроса(200) (обязательно возвращать код ответа), сообщаем, что формат возвращаемого ответа является текстовым. А так же вызываем фунцию переключения реле
-  // });
-  // server.on("/relay_status", []() {
-  //   server.send(200, "text/plain", relay_status());
-  // });
   server.on("/check_temp", []() {
     server.send(200, "text/plain", check_temp());
   });
@@ -307,10 +291,17 @@ void setup(void){
   server.begin();
   DBG_OUTPUT_PORT.println("HTTP server started");
 
-  if (SD.begin(4)){
-     DBG_OUTPUT_PORT.println("SD Card initialized.");
-     hasSD = true;
-  }
+  
+    while (true) {
+      if (SD.begin(4)) {
+        DBG_OUTPUT_PORT.println("SD Card initialized.");
+        hasSD = true;
+        break;
+      }
+      delay(500);
+      // DBG_OUTPUT_PORT.println("SD Card not initialized.");
+    }
+  
 }
 
 void loop(void){
