@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Input</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="time-picker hidden__light">
+            <div class="time__el">
+                <label for="timeInput">Время включения:</label>
+                <input type="time" id="timeInput_00" value="08:00" max>
+            </div>
+            <div class="time__el">
+                <label for="timeInput">Время выключения:</label>
+                <input type="time" id="timeInput_01" value="08:00" max>
+            </div>
+            <button onclick="getTime()">Сохранить</button>
+        </div>
+    </div>
+
+    <script>
+        function getTime() {
+            var timeInputElement = document.getElementById('timeInput');
+            var selectedTime = timeInputElement.value;
+
+            // Разбиваем строку времени на часы и минуты
+            var hours = selectedTime.split(':')[0];
+            var minutes = selectedTime.split(':')[1];
+
+            alert('Selected Time:\nHours: ' + hours + '\nMinutes: ' + minutes);
+        }
+    </script>
+</body>
+
+</html>
