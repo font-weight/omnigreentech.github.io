@@ -5,14 +5,26 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width">
-	<title>OmniGreenTech</title>
+	<title>Omni Green Tech</title>
 	<link rel="stylesheet" href="style.css">
 	<script src="js/jquery-3.7.1.slim.min.js"></script>
 	<script src="js/highcharts.js"></script>
 </head>
 
 <body>
-	<header></header>
+	<header>
+		<div class="current_time" id="current_time"></div>
+		<div class="set_currentTime" id="set_currentTime">
+			<div class="setTime_content">
+				<div class="currTime_closeBtn" id="currTime_closeBtn"><?xml version="1.0" ?><!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'><svg height="512px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M443.6,387.1L312.4,255.4l131.5-130c5.4-5.4,5.4-14.2,0-19.6l-37.4-37.6c-2.6-2.6-6.1-4-9.8-4c-3.7,0-7.2,1.5-9.8,4  L256,197.8L124.9,68.3c-2.6-2.6-6.1-4-9.8-4c-3.7,0-7.2,1.5-9.8,4L68,105.9c-5.4,5.4-5.4,14.2,0,19.6l131.5,130L68.4,387.1  c-2.6,2.6-4.1,6.1-4.1,9.8c0,3.7,1.4,7.2,4.1,9.8l37.4,37.6c2.7,2.7,6.2,4.1,9.8,4.1c3.5,0,7.1-1.3,9.8-4.1L256,313.1l130.7,131.1  c2.7,2.7,6.2,4.1,9.8,4.1c3.5,0,7.1-1.3,9.8-4.1l37.4-37.6c2.6-2.6,4.1-6.1,4.1-9.8C447.7,393.2,446.2,389.7,443.6,387.1z"/></svg></div>
+				<h2>Установить текущее время</h2>
+				<div class="curTime__el">
+					<input type="time" id="current_time_input" value="" class="timeInput" max>
+					<input type="button" value="Сохранить" class="set_time_button" id="set_time_button" />
+				</div>
+			</div>
+		</div>
+	</header>
 	<div class="wrap">
 		<div class="menu-btn"><svg id="Layer_1" version="1.1" viewBox="0 0 512 512" xml:space="preserve"
 				xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -97,75 +109,235 @@
 
 
 				</div>
+				<div class="tables__body">
+					<div class="tables__element box_shadow">
+						<table class="temp_table">
+							<caption>Помещение</caption>
+							<tr>
+								<th class="table_first">№</th>
+								<th>Данные</th>
+								<th class="table_last">Температура</th>
+							</tr>
+							<tr>
+								<td class="table_first">1</td>
+								<td>Температура в помещении</td>
+								<td><span id="room_temp_1"></span>°C</td>
+							</tr>
+							<tr>
+								<td class="table_first">2</td>
+								<td>Влажность в помещении</td>
+								<td><span id="room_humidity_1"></span>%</td>
+							</tr>
+							<tr>
+								<td class="table_first">3</td>
+								<td></td>
+								<td><span id=""></span></td>
+							</tr>
+						</table>
+					</div>
+					<div class="tables__element box_shadow">
+						<table class="ph_table">
+							<caption>Содержание солей</caption>
+							<tr>
+								<th class="table_first">№</th>
+								<th>Емкость</th>
+								<th class="table_last">Содержание солей</th>
+							</tr>
+							<tr>
+								<td class="table_first">1</td>
+								<td>1 емкость</td>
+								<td><span id="tds_1"></span></td>
+							</tr>
+							<tr>
+								<td class="table_first">2</td>
+								<td>2 емкость</td>
+								<td><span id="tds_2"></span></td>
+							</tr>
+							<tr>
+								<td class="table_first">3</td>
+								<td>3 емкость</td>
+								<td><span id="tds_3"></span></td>
+							</tr>
+						</table>
+					</div>
+
+
+
+				</div>
 				<div class="relay__set">
 					<div class="pump__set relay__set__el box_shadow">
 						<span>Насосы</span>
-						<div class="relay__element">
+						<div class="relay__element relay__element_main">
 							<span class="relay__name">Насос 1</span>
 							<input type="button" id="relay_button_0" class="relay_off" />
 						</div>
-						<div class="relay__element">
+						<div class="relay__element relay__element_main">
 							<span class="relay__name">Насос 2</span>
 							<input type="button" id="relay_button_1" class="relay_off" />
 						</div>
-						<div class="relay__element">
+						<div class="relay__element relay__element_main">
 							<span class="relay__name">Насос 3</span>
 							<input type="button" id="relay_button_2" class="relay_off" />
 						</div>
-						<div class="relay__element">
+						<div class="relay__element relay__element_main">
 							<span class="relay__name">Насос 4</span>
 							<input type="button" id="relay_button_3" class="relay_off" />
 						</div>
-						<div class="relay__element">
+						<div class="relay__element relay__element_main">
 							<span class="relay__name">Насос 5</span>
 							<input type="button" id="relay_button_4" class="relay_off" />
 						</div>
-						<div class="relay__element">
+						<div class="relay__element relay__element_main">
 							<span class="relay__name">Насос 6</span>
 							<input type="button" id="relay_button_5" class="relay_off" />
 						</div>
-						
-					</div>
-					<div class="light__set relay__set__el box_shadow">
-						<span>Освещение</span>
-						<div class="relay__element">
-							<span class="relay__name">Свет 1</span>
-							<input type="button" id="light_button_0" class="relay_off" />
-						</div>
-						<div class="relay__element">
-							<span class="relay__name">Свет 2</span>
-							<input type="button" id="light_button_1" class="relay_off" />
-						</div>
-						<div class="relay__element">
-							<span class="relay__name">Свет 3</span>
-							<input type="button" id="light_button_2" class="relay_off" />
-						</div>
-						<div class="relay__element">
-							<span class="relay__name">Свет 4</span>
-							<input type="button" id="light_button_3" class="relay_off" />
-						</div>
-						<div class="relay__element">
-							<span class="relay__name">Свет 5</span>
-							<input type="button" id="light_button_4" class="relay_off" />
-						</div>
-						<div class="relay__element">
-							<span class="relay__name">Свет 6</span>
-							<input type="button" id="light_button_5" class="relay_off" />
-						</div>
-					</div>
 
+					</div>
+					<div class="light__subpage" id="light__subpage">
+						<div class="hidden__light">
+							<div class="light-back-btn" id="light-back-btn"><svg class="svg-icon" viewBox="0 0 20 20">
+									<path
+										d="M11.739,13.962c-0.087,0.086-0.199,0.131-0.312,0.131c-0.112,0-0.226-0.045-0.312-0.131l-3.738-3.736c-0.173-0.173-0.173-0.454,0-0.626l3.559-3.562c0.173-0.175,0.454-0.173,0.626,0c0.173,0.172,0.173,0.451,0,0.624l-3.248,3.25l3.425,3.426C11.911,13.511,11.911,13.789,11.739,13.962 M18.406,10c0,4.644-3.763,8.406-8.406,8.406S1.594,14.644,1.594,10S5.356,1.594,10,1.594S18.406,5.356,18.406,10 M17.521,10c0-4.148-3.373-7.521-7.521-7.521c-4.148,0-7.521,3.374-7.521,7.521c0,4.148,3.374,7.521,7.521,7.521C14.147,17.521,17.521,14.148,17.521,10">
+									</path>
+								</svg></div>
+							<h1>Освещение</h1>
+						</div>
+						<div class="light__set relay__set__el box_shadow">
+
+							<span id="light-btn">Освещение</span>
+							<div class="relay__element relay__element_main">
+								<span class="relay__name">Свет 1</span>
+								<input type="button" id="light_button_0" class="relay_off" />
+								<div class="time-picker hidden__light">
+									<div class="time__el">
+										<label for="timeInput">Время включения:</label>
+										<input type="time" id="light_timeInput_00" value="08:00" class="timeInput" max>
+									</div>
+									<div class="time__el">
+										<label for="timeInput">Время выключения:</label>
+										<input type="time" id="light_timeInput_01" value="08:00" class="timeInput" max>
+									</div>
+									<div class="time__el"><span id="cur_alarm_0"></span></div>
+									<div class="time__el"><input type="button" value="Сохранить" class="set_arm" id="set_alarm_0" /><input type="button" value="Отключить" class="set_arm alarm_off" id="alarm_off_0"/></div>
+								</div>
+							</div>
+							<div class="relay__element relay__element_main">
+								<span class="relay__name">Свет 2</span>
+								<input type="button" id="light_button_1" class="relay_off" />
+								<div class="time-picker hidden__light">
+									<div class="time__el">
+										<label for="timeInput">Время включения:</label>
+										<input type="time" id="light_timeInput_10" value="08:00" class="timeInput" max>
+									</div>
+									<div class="time__el">
+										<label for="timeInput">Время выключения:</label>
+										<input type="time" id="light_timeInput_11" value="08:00" class="timeInput" max>
+									</div>
+									<div class="time__el"><span id="cur_alarm_1"></span></div>
+									<div class="time__el"><input type="button" value="Сохранить" class="set_arm"
+											id="set_alarm_1" /><input type="button" value="Отключить" class="set_arm alarm_off" id="alarm_off_1"/></div>
+								</div>
+							</div>
+							<div class="relay__element relay__element_main">
+								<span class="relay__name">Свет 3</span>
+								<input type="button" id="light_button_2" class="relay_off" />
+								<div class="time-picker hidden__light">
+									<div class="time__el">
+										<label for="timeInput">Время включения:</label>
+										<input type="time" id="light_timeInput_20" value="08:00" class="timeInput" max>
+									</div>
+									<div class="time__el">
+										<label for="timeInput">Время выключения:</label>
+										<input type="time" id="light_timeInput_21" value="08:00" class="timeInput" max>
+									</div>
+									<div class="time__el"><span id="cur_alarm_2"></span></div>
+									<div class="time__el"><input type="button" value="Сохранить" class="set_arm"
+											id="set_alarm_2" /><input type="button" value="Отключить" class="set_arm alarm_off" id="alarm_off_2"/></div>
+								</div>
+							</div>
+							<div class="relay__element relay__element_main">
+								<span class="relay__name">Свет 4</span>
+								<input type="button" id="light_button_3" class="relay_off" />
+								<div class="time-picker hidden__light">
+									<div class="time__el">
+										<label for="timeInput">Время включения:</label>
+										<input type="time" id="light_timeInput_30" value="08:00" class="timeInput" max>
+									</div>
+									<div class="time__el">
+										<label for="timeInput">Время выключения:</label>
+										<input type="time" id="light_timeInput_31" value="08:00" class="timeInput" max>
+									</div>
+									<div class="time__el"><span id="cur_alarm_3"></span></div>
+									<div class="time__el"><input type="button" value="Сохранить" class="set_arm"
+											id="set_alarm_3" /><input type="button" value="Отключить" class="set_arm alarm_off" id="alarm_off_3"/></div>
+								</div>
+							</div>
+							<div class="relay__element relay__element_main">
+								<span class="relay__name">Свет 5</span>
+								<input type="button" id="light_button_4" class="relay_off" />
+								<div class="time-picker hidden__light">
+									<div class="time__el">
+										<label for="timeInput">Время включения:</label>
+										<input type="time" id="light_timeInput_40" value="08:00" class="timeInput" max>
+									</div>
+									<div class="time__el">
+										<label for="timeInput">Время выключения:</label>
+										<input type="time" id="light_timeInput_41" value="08:00" class="timeInput" max>
+									</div>
+									<div class="time__el"><span id="cur_alarm_4"></span></div>
+									<div class="time__el"><input type="button" value="Сохранить" class="set_arm"
+											id="set_alarm_4" /><input type="button" value="Отключить" class="set_arm alarm_off" id="alarm_off_4"/></div>
+								</div>
+							</div>
+							<div class="relay__element relay__element_main">
+								<span class="relay__name">Свет 6</span>
+								<input type="button" id="light_button_5" class="relay_off" />
+								<div class="time-picker hidden__light">
+									<div class="time__el">
+										<label for="timeInput">Время включения:</label>
+										<input type="time" id="light_timeInput_50" value="08:00" class="timeInput" max>
+									</div>
+									<div class="time__el">
+										<label for="timeInput">Время выключения:</label>
+										<input type="time" id="light_timeInput_51" value="08:00" class="timeInput" max>
+									</div>
+									<div class="time__el"><span id="cur_alarm_5"></span></div>
+									<div class="time__el"><input type="button" value="Сохранить" class="set_arm"
+											id="set_alarm_5" /><input type="button" value="Отключить" class="set_arm alarm_off" id="alarm_off_5"/></div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 
 			</div>
 			<div class="content-page scheme__page">
-				<h1>Устройство OmniGreenTech</h1>
+				<h1>Устройство фермы</h1>
 
 				<div class="scheme-text">
-					<img class="scheme-img" src="scheme.png" alt="">
-					<p>&nbsp;&nbsp;&nbsp;&nbsp;Для отслеживания температуры опустите датчик температуры в нужную емкость и подождите пока температура на главном экране не перестанет изменяться.</p>
-					<p>&nbsp;&nbsp;&nbsp;&nbsp;Для отслеживания других параметров проведите те же действия с другими датчиками.</p>
-					<p>&nbsp;&nbsp;&nbsp;&nbsp;Для включения освещения или насоса вам нужно только нажать одну кнопку на главном экране.</p>
-					<p>&nbsp;&nbsp;&nbsp;&nbsp;Во вкладке "Данные" можно отслеживать как менялся показатель температуры с течением времени.</p>
+					<img class="scheme-img" src="scheme.jpeg" alt="">
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;Система аквакультуры представляет собой 4 емкости по 1,5 м3 соединенные
+						между собой посредством основных циркуляционных труб диаметром 90 мм.</p>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;В каждую емкость подведена циркуляционная труба для подачи воды и сбора
+						воды с установленными кранами переключения. Для полной циркуляции (штатный режим работы системы)
+						все краны должны быть открыты.</p>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;Для дренажной системы (система слива отработанной воды) использованы
+						трубы диаметром 32 мм. Для полной циркуляции (штатный режим работы системы) все краны должны
+						быть закрыты.</p>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;Фильтрация воды осуществялется посредством песочного фильтра,
+						протеинового фильтра и биофильтра.</p>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;Биофильтр - это важный элемент оборудования, функция которого заключается
+						в очистке системы от вредных для гидробионтов веществ. Песочный фильтр не удаляет все
+						органические вещества, самые мелкие частицы проходят сквозь него так же, как и растворенные
+						вещества, такие как фосфат или азот.</p>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;Для подачи чистой воды в систему необходимо: <br>
+						1) Открыть кран<br>
+						2) Включить насос подачи воды<br>
+						3) Наполнить воду в системе до достаточного урових<br>
+						4) Выключить насос<br>
+						5) Закрыть кран подачи воды</p>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;Для подачи раствора для растений необходимо открыть растворный кран на
+						биофильтре и кран подачи раствора на соответствующей гидропонной установке.</p>
 				</div>
 			</div>
 			<div class="content-page data__page" id="data__page">
@@ -175,16 +347,26 @@
 				<h1>О наc и нашей миссии</h1>
 				<p class="about-us_text">Наша миссия: <br>
 					&nbsp;&nbsp;&nbsp;&nbsp;Создание инновационной фермы, где мы используем передовые информационные
-					технологии для устойчивого и эффективного выращивания рыбы и растений. Мы стремимся к
+					технологии для устойчивого и эффективного выращивания рыбы и растений без отходов. Мы стремимся к
 					обеспечению высококачественных, экологически чистых продуктов, используя цифровые решения для
 					минимизации отходов и оптимизации производства. Наша цель - создать устойчивую среду, где IT и
 					сельское хозяйство сочетаются для производства пищевых продуктов без отрицательного воздействия на
 					окружающую среду.</p>
+				<p class="about-us_text">Наши цели: <br>
+					&nbsp;&nbsp;&nbsp;&nbsp;Организовать производство, которое минимизирует отходы, применяя
+					гидропонические инновации для одновременного выращивания рыбы и растений с помощью современного
+					программного обеспечения.</p>
+				<p class="about-us_text">Достижения: <br>
+					&nbsp;&nbsp;&nbsp;&nbsp;Наши заслуги включают в себя победу на конкурсе, организованном "Olzha
+					agro", где мы представляли наш проект по созданию IT-фермы и выйграли сертификат на 2.500.000 тенге.
+				</p>
 
 				<h2>Наша команда</h2>
-				<img src="photo-team.jpeg" alt="">
+				<img src="photo_team.jpg" alt="">
 			</div>
 		</div>
+	</div>
+	</div>
 
 
 	</div>
@@ -192,11 +374,14 @@
 	<script>
 		var relay_quantity = 6; // количество реле
 		var light_quantity = 6; // количество освещения
-		// var relay_1 = document.getElementById("relay_button_1");
+		let ph_quantity = 2; // количество датчиков Ph
 		var relay_status = [];
 		let relay = [];
 		var light_status = [];
 		let light = [];
+		let off_alarm = [];
+
+		let but_set_alarm = [];
 
 		for (let i = 0; i < relay_quantity; i++) {
 			let relay_id = "relay_button_" + i;
@@ -207,8 +392,17 @@
 			let light_id = "light_button_" + i;
 			light.push(document.getElementById(light_id));
 			light_status.push(0);
+
+			let off_alarm_id = "alarm_off_" + i;
+			off_alarm.push(document.getElementById(off_alarm_id));
+
+			let alarm_id = "set_alarm_" + i;
+			but_set_alarm.push(document.getElementById(alarm_id));
 		}
-		console.log(relay);
+
+
+
+		// console.log(relay);
 		function output_state(i, out_n) {
 			var i_send;
 			var request = new XMLHttpRequest();
@@ -253,43 +447,44 @@
 			}
 			request.send();
 		}
+
 		function output_inverse(i, out_n) {
 			var i_send;
 			var request = new XMLHttpRequest();
 			if (out_n == 1) {
 				i_send = 10 + i;
 				request.open('GET', '/relay_switch?val=' + i_send, false);
-			request.send();
-			if (request.readyState == 4 && request.status == 200) {
-				var response = request.responseText;
-				if (response == '0') {
+				request.send();
+				if (request.readyState == 4 && request.status == 200) {
+					var response = request.responseText;
+					if (response == '0') {
 
-					relay[i].classList.remove('relay_on');
-					relay[i].classList.add('relay_off');
-					relay_status[i] = 0;
-				} else {
-					relay[i].classList.remove('relay_off');
-					relay[i].classList.add('relay_on');
-					relay_status[i] = 1;
+						relay[i].classList.remove('relay_on');
+						relay[i].classList.add('relay_off');
+						relay_status[i] = 0;
+					} else {
+						relay[i].classList.remove('relay_off');
+						relay[i].classList.add('relay_on');
+						relay_status[i] = 1;
+					}
 				}
-			}
 			} else if (out_n == 2) {
 				i_send = 20 + i;
 				request.open('GET', '/relay_switch?val=' + i_send, false);
-			request.send();
-			if (request.readyState == 4 && request.status == 200) {
-				var response = request.responseText;
-				if (response == '0') {
+				request.send();
+				if (request.readyState == 4 && request.status == 200) {
+					var response = request.responseText;
+					if (response == '0') {
 
-					light[i].classList.remove('relay_on');
-					light[i].classList.add('relay_off');
-					light_status[i] = 0;
-				} else {
-					light[i].classList.remove('relay_off');
-					light[i].classList.add('relay_on');
-					light_status[i] = 1;
+						light[i].classList.remove('relay_on');
+						light[i].classList.add('relay_off');
+						light_status[i] = 0;
+					} else {
+						light[i].classList.remove('relay_off');
+						light[i].classList.add('relay_on');
+						light_status[i] = 1;
+					}
 				}
-			}
 			}
 		}
 
@@ -309,8 +504,23 @@
 			}
 			for (let i = 0; i < light_quantity; i++) {
 				output_state(i, 2);
+				getCurrAlarm(i);
+				but_set_alarm[i].addEventListener('click', function () {
+					setAlarm(i);
+				});
 			}
+			getCurrTime();
+			setInterval
 		});
+		document.getElementById('set_time_button').addEventListener('click', function () {
+			setCurrTime();
+		});
+
+		for (let i = 1; i <= ph_quantity; i++) {
+			setInterval(function() {
+				getPh(i);
+			}, 5000);
+		}
 
 		for (let i = 0; i < relay_quantity; i++) {
 			relay[i].addEventListener('click', function () {
@@ -322,10 +532,18 @@
 			light[i].addEventListener('click', function () {
 				output_inverse(i, 2);
 			});
+			off_alarm[i].addEventListener('click', function () {
+				off_alarm_func(i);
+			});
 		}
+
+
 		// функционал по переключению между вкладками___________________________________________
 
-		var intervalData = setInterval(getTempChart, 5000);
+		let intervalData = setInterval(getTempChart, 5000);
+		setInterval(getHumidTemp, 5000);
+		setInterval(getCurrTime, 60000);
+
 
 		$('.menu-btn').on('click', function () {	// килкаем на 'бургер' - выезжает меню
 			$('.menu').toggleClass('menu_active');
@@ -348,7 +566,33 @@
 			$('.content-page').css('display', 'none');
 			$('.about-us__page').css('display', 'block');
 		})
-
+		$('#current_time').on('click', function () {	// килкаем на 'бургер' - выезжает меню
+			$('#set_currentTime').css('display', 'flex');
+		})
+		$('#currTime_closeBtn').on('click', function () {	// килкаем на 'бургер' - выезжает меню
+			$('#set_currentTime').css('display', 'none');
+		})
+		$('#light-btn').on('click', function () {
+			$('.tables__body').css('display', 'none');
+			$('.pump__set').css('display', 'none');
+			$('.hidden__light').css('display', 'block');
+			$('.relay__set').css('display', 'block');
+			$('.light__subpage').removeClass('light__subpage').addClass('light__page');
+			$('#light-btn').css('display', 'none');
+			$('.relay__element').removeClass('relay__element_main');
+			for (let i = 0; i < light_quantity; i++) {
+				getCurrAlarm(i);
+			}
+		})
+		$('#light-back-btn').on('click', function () {
+			$('.tables__body').css('display', 'flex');
+			$('.pump__set').css('display', 'flex');
+			$('.hidden__light').css('display', 'none');
+			$('.relay__set').css('display', 'flex');
+			$('.light__page').removeClass('light__page').addClass('light__subpage');
+			$('#light-btn').css('display', 'block');
+			$('.relay__element').addClass('relay__element_main');
+		})
 
 
 		var chartT = new Highcharts.Chart({
@@ -397,6 +641,155 @@
 			xhttp.send();
 		}
 
+
+		function setAlarm(val) { // установка времени влючения и выключения для реле с индексом 
+			var timeOnElement = document.getElementById('light_timeInput_' + val + '0');
+			var selectedTimeOn = timeOnElement.value;
+
+			var timeOffElement = document.getElementById('light_timeInput_' + val + '1');
+			var selectedTimeOff = timeOffElement.value;
+
+			// Разбиваем строку времени на часы и минуты для времени выключения
+			var hoursOff = selectedTimeOff.split(':')[0];
+			var minutesOff = selectedTimeOff.split(':')[1];
+
+			var request = new XMLHttpRequest();
+
+			request.open('GET', '/set_alarm?val=' + val + '&timeOn=' + selectedTimeOn + '&timeOff=' + selectedTimeOff, true); // запрос 192.168.4.1/set_alarm?val=val?timeOn=timeOn?timeOff=timeOff
+			request.send();
+			request.onload = function () {
+				if (request.readyState == 4 && request.status == 200) {
+					getCurrAlarm(val);
+				}
+			}
+		}
+
+		function getCurrAlarm(val) {
+			var request = new XMLHttpRequest();
+			request.open('GET', '/getCurrAlarm?val=' + val, true);
+			request.send();
+			request.onload = function () {
+				if (request.readyState == 4 && request.status == 200) {
+					let response = request.responseText;
+					if (response === "0") {
+						document.getElementById('cur_alarm_' + val).innerHTML = "Не установлен";
+					} else {
+						const alarm_time = response.split(":");
+						for (let i = 0; i < alarm_time.length; i++) {
+							if (alarm_time[i].length === 1) {
+								alarm_time[i] = `0${alarm_time[i]}`;
+							}
+						}
+
+						const inner_time = `Время включения: ${alarm_time[0]}:${alarm_time[1]} <br>
+						Время выключения: ${alarm_time[2]}:${alarm_time[3]}`;
+						document.getElementById('cur_alarm_' + val).innerHTML = inner_time;
+						document.getElementById('alarm_off_' + val).style.display = "block";
+					}
+
+				}
+			}
+		}
+
+
+		function getCurrTime() {
+			let request = new XMLHttpRequest();
+			request.open('GET', '/getCurrTime', true);
+			request.send();
+			request.onload = function () {
+				if (request.readyState == 4 && request.status == 200) {
+					let response = request.responseText;
+					if (response.length == 5) {
+						document.getElementById('current_time').innerHTML = response;
+					} else {
+						document.getElementById('current_time').innerHTML = "Error!";
+					}
+					
+				} else {
+					document.getElementById('current_time').innerHTML = "Error!";
+				}
+				
+			}
+		}
+
+		function setCurrTime() {
+			let selectedTime = document.getElementById('current_time_input').value;
+			let curr_hour = selectedTime.split(':')[0];
+			let curr_minute = selectedTime.split(':')[1];
+
+			let request = new XMLHttpRequest();
+			request.open('GET', '/setCurrTime?hour=' + curr_hour + '&minute=' + curr_minute, true);
+			request.send();
+			request.onload = function () {
+				if (request.readyState == 4 && request.status == 200) {
+					let response = request.responseText;
+					if (response.length == 5) {
+						document.getElementById('current_time').innerHTML = response;
+					} else {
+						document.getElementById('current_time').innerHTML = "Error!";
+					}
+					
+				} else {
+					document.getElementById('current_time').innerHTML = "Error!";
+				}
+				$('#set_currentTime').css('display', 'none');
+				
+			}
+		}
+
+		function off_alarm_func(val) {
+			let request = new XMLHttpRequest();
+			request.open('GET', '/offAlarm?val=' + val, true);
+			request.send();
+			request.onload = function () {
+				if (request.readyState == 4 && request.status == 200) {
+					let response = request.responseText;
+					if (response === "0") {
+						document.getElementById('alarm_off_' + val).style.display = "none";
+						document.getElementById('cur_alarm_' + val).innerHTML = "Не установлен";
+					}
+					
+				}
+			}
+		}
+		
+
+		function getHumidTemp() {
+
+			let request = new XMLHttpRequest();
+			request.open('GET', '/getHumidTemp', true);
+			request.send();
+			request.onload = function () {
+				if (request.readyState == 4 && request.status == 200) {
+					let response = request.responseText;
+					if (response.split(':').length == 2) {
+						document.getElementById('room_temp_1').innerHTML = response.split(':')[0];
+						document.getElementById('room_humidity_1').innerHTML = response.split(':')[1];
+					} else {
+						document.getElementById('room_temp_1').innerHTML = "Error!";
+						document.getElementById('room_humidity_1').innerHTML = "Error!";
+					}
+					
+				} else {
+					document.getElementById('room_temp_1').innerHTML = "Error!";
+					document.getElementById('room_humidity_1').innerHTML = "Error!";
+				}
+				
+			}
+		}
+
+		function getPh(val) {
+			var request = new XMLHttpRequest();
+			request.open('GET', '/getPh?val=' + val, true);
+			request.send();
+			request.onload = function () {
+				if (request.readyState == 4 && request.status == 200) {
+					let response = request.responseText;
+					document.getElementById('ph_' + val).innerHTML = response;
+					
+				}
+			}
+		}
 
 	</script>
 </body>
